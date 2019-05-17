@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mnist-pytorch-train-pod
+  # labels:
+  #   app: myapp
+spec:
+  containers:
+  - name: mnist-train-container
+    image: "srinidhigoud/project3:latest"
+    env:
+      - name: authorname
+        value: SrinidhiGoudMyadaboyina
+      - name: authoremail
+        value: "sgm400@nyu.edu"
+      - name: trainingdataendpointurl
+        value: "s3.us-south.cloud-object-storage.appdomain.cloud"
+      - name: trainingdataaccesskeyid
+        value: "2e32d01de8b34d9c95b490078d4be5c6"
+      - name: trainingdataaccesskey
+        value: "c0b30b7b6648173e90b6c77b78a681877a15e9d6667f044e"
+      - name: trainingdatabucket
+        value: training-mnist-data-1
+      - name: trainingresultsendpointurl
+        value: "s3.us-south.cloud-object-storage.appdomain.cloud"
+      - name: trainingresultsaccesskeyid
+        value: "2e32d01de8b34d9c95b490078d4be5c6"
+      - name: trainingresultsaccesskey
+        value: "c0b30b7b6648173e90b6c77b78a681877a15e9d6667f044e"
+      - name: trainingresultsbucket
+        value: training-mnist-results-1
+      - name: ML_ENV
+        value: https://us-south.ml.cloud.ibm.com
+      - name: ML_USERNAME
+        value: "190c6475-28ed-4311-b024-1083d6713007"
+      - name: ML_PASSWORD
+        value: "199b9efe-a4d1-4d15-af00-1adcde145090"
+      - name: ML_INSTANCE
+        value: "95d02587-7207-4dbb-8b50-25ed32180a5"
+    # command: ['sh', '-c']
+    # command: ['sh', '-c', 'echo YES']
+    args: ['./train-hpo.sh']
+    # command: ['sh', '-c', 'echo "$(ls)"']
+    

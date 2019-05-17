@@ -1,0 +1,34 @@
+model_definition:
+  name: pytorch-mnist-showtest1
+  author:
+    name: ${authorname}
+    email: ${authoremail}
+  description: Simple MNIST model implemented in Pytorch
+  framework:
+    name: pytorch
+    version: "0.4"
+    runtimes: 
+      name: python
+      version: "3.5"
+  execution:
+    command: python3 mnist_example.py
+    compute_configuration:
+      name: k80
+training_data_reference:
+  name: training_data_reference_name
+  connection:
+    endpoint_url: ${trainingdataendpointurl}
+    access_key_id: ${trainingdataaccesskeyid}
+    secret_access_key: ${trainingdataaccesskey}
+  source:
+    bucket: ${trainingdatabucket}
+  type: s3
+training_results_reference:
+  name: training_results_reference_name
+  connection:
+    endpoint_url: ${trainingresultsendpointurl}
+    access_key_id: ${trainingresultsaccesskeyid}
+    secret_access_key: ${trainingresultsaccesskey}
+  target:
+    bucket: ${trainingresultsbucket}
+  type: s3
